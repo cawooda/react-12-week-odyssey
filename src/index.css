@@ -1,32 +1,127 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  /* ===========================
+     PRIMARY (Vibrant Indigo)
+     =========================== */
+  --color-primary: #6366f1; /* Soft indigo – modern, friendly, accessible */
+  --color-primary-hover: #4f46e5; /* Slightly deeper on hover */
+  --color-primary-active: #4338ca; /* Even more saturated for active state */
+  --color-primary-contrast: #ffffff;
+
+  /* ===========================
+     SECONDARY (Subtle Slate)
+     =========================== */
+  --color-secondary: #64748b; /* Neutral cool gray – great for secondary actions */
+  --color-secondary-hover: #475569;
+  --color-secondary-active: #334155;
+  --color-secondary-contrast: #ffffff;
+
+  /* ===========================
+     ACCENT (Energetic Amber)
+     =========================== */
+  --color-accent: #f59e0b; /* Warm amber – draws attention without clashing */
+  --color-accent-hover: #d97706;
+  --color-accent-contrast: #ffffff;
+
+  /* ===========================
+     BACKGROUND LAYER
+     =========================== */
+  --color-bg: #fafafa; /* Near-white, soft on eyes */
+  --color-bg-muted: #f1f5f9; /* Slightly cooler muted background */
+
+  /* ===========================
+     SURFACES (Cards, Modals)
+     =========================== */
+  --color-surface: #ffffff; /* Pure white for elevated surfaces */
+  --color-surface-muted: #f8fafc; /* Very light blue-gray for subtle depth */
+
+  /* ===========================
+     BORDERS & DIVIDERS
+     =========================== */
+  --color-border: #e2e8f0; /* Soft gray-blue for light dividers */
+  --color-border-strong: #cbd5e1; /* Slightly more visible when needed */
+
+  /* ===========================
+     TEXT SYSTEM
+     =========================== */
+  --color-text: #1e293b; /* Deep slate gray – easier to read than pure black */
+  --color-text-muted: #64748b; /* Matches secondary, consistent hierarchy */
+  --color-text-inverse: #ffffff;
+  --color-text-disabled: #94a3b8;
+
+  /* ===========================
+     LINKS
+     =========================== */
+  --color-link: #6366f1; /* Reuse primary for consistency */
+  --color-link-hover: #4f46e5;
+
+  /* ===========================
+     STATUS COLORS
+     =========================== */
+  --color-success: #10b981; /* Emerald green – clean and positive */
+  --color-success-bg: #ecfdf5;
+  --color-success-contrast: #064e3b;
+
+  --color-warning: #f59e0b; /* Amber – same as accent, cohesive */
+  --color-warning-bg: #fffbeb;
+  --color-warning-contrast: #78350f;
+
+  --color-error: #ef4444; /* Soft red – less aggressive than pure red */
+  --color-error-bg: #fef2f2;
+  --color-error-contrast: #b91c1c;
+
+  --color-info: #3b82f6; /* Bright but calm blue */
+  --color-info-bg: #eff6ff;
+  --color-info-contrast: #1d4ed8;
+
+  /* ===========================
+     ACCESSIBILITY & OVERLAYS
+     =========================== */
+  --color-focus-ring: #6366f1; /* Matches primary – clear, consistent focus */
+  --color-selection: #dbeafe; /* Light blue highlight (like native text selection) */
+  --color-overlay: rgba(30, 41, 59, 0.7); /* Dark, readable overlay */
+}
+
+/* Override Tailwind v4's @media(prefers-color-scheme) with .dark class selector */
+.dark {
+  --color-scheme: dark;
+}
+
+.dark .dark\:bg-blue-900 {
+  background-color: var(--color-blue-900) !important;
+}
+
+.dark .dark\:text-gray-100 {
+  color: var(--color-gray-100) !important;
+}
+
+.dark .dark\:text-gray-200 {
+  color: var(--color-gray-200) !important;
+}
+
+.dark .dark\:bg-transparent {
+  background-color: #0000 !important;
+}
+
+/* Global styles */
 :root {
+  color-scheme: light;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.dark {
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -34,36 +129,4 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
